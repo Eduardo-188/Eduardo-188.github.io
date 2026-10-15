@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Engineering portfolio of Eduardo Carvalho — Formula Student aerodynamics, CFD and motorsport experience.">
+<title>Eduardo Carvalho — Engineering Portfolio</title>
+<style>
+  :root {
+    --ink: #111516;
+    --surface: #171d1f;
+    --surface-2: #20292c;
+    --paper: #f2efe7;
+    --muted: #aab4b7;
+    --line: rgba(242,239,231,.17);
+    --accent: #2f93d1;
+    --accent-soft: #9fddff;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--ink); color: var(--paper); font-family: Arial, Helvetica, sans-serif; line-height: 1.48; }
+  a { color: inherit; text-decoration: none; }
+  .shell { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+  .eyebrow { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-soft); font-weight: 700; }
+  .nav { position: absolute; inset: 0 0 auto; z-index: 10; padding: 24px 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .mark { font-weight: 800; letter-spacing: .09em; font-size: .85rem; }
+  .mark span { color: var(--accent); }
+  .nav-links { display: flex; gap: 18px; font-size: .82rem; color: #dbe1e2; }
+  .nav-links a:hover { color: var(--accent-soft); }
+  .hero { min-height: 730px; position: relative; overflow: hidden; display: grid; align-items: end; background: #0e1213; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(242,239,231,.052) 1px, transparent 1px), linear-gradient(90deg, rgba(242,239,231,.052) 1px, transparent 1px); background-size: 56px 56px; mask-image: linear-gradient(to bottom, black, transparent 82%); z-index: -1; }
+  .hero-img { position: absolute; inset: 0; z-index: -2; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; padding: 0 0 96px; background: #0e1213; }
+  .hero-img img { width: 100%; height: auto; max-height: 430px; object-fit: contain; object-position: center center; opacity: .74; filter: saturate(.82) contrast(1.08); }
+  .hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,14,15,.98) 0%, rgba(11,14,15,.78) 34%, rgba(11,14,15,.12) 76%, rgba(11,14,15,.38) 100%), linear-gradient(0deg, #0f1415 0%, transparent 39%); }
+  .hero-content { padding: 138px 0 70px; max-width: 800px; }
+  .hero h1 { margin: 10px 0 15px; font-size: clamp(3.55rem, 8vw, 7.1rem); letter-spacing: -.075em; line-height: .86; text-wrap: balance; }
+  .hero h1 em { display: block; color: var(--accent); font-style: normal; }
+  .hero p { max-width: 600px; color: #d8dedf; font-size: clamp(1rem, 1.55vw, 1.2rem); margin: 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .button { display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border: 1px solid rgba(242,239,231,.45); background: transparent; color: inherit; font: inherit; font-weight: 700; font-size: .88rem; cursor: pointer; transition: .2s ease; }
+  .button.primary { background: var(--accent); border-color: var(--accent); color: #191514; }
+  .button:hover { transform: translateY(-2px); border-color: var(--paper); }
+  .hero-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); margin-top: 48px; }
+  .hero-meta div { padding: 13px 16px 0 0; font-size: .82rem; color: var(--muted); }
+  .hero-meta div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+  .hero-meta b { display: block; color: var(--paper); font-size: .78rem; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 2px; }
+  section { padding: 105px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start; margin-bottom: 40px; }
+  .section-head h2 { margin: 8px 0 0; font-size: clamp(2.2rem, 4vw, 4rem); letter-spacing: -.055em; line-height: .95; }
+  .section-head p { margin: 0; color: var(--muted); max-width: 600px; font-size: 1.02rem; }
+  .case { border-top: 1px solid var(--line); padding-top: 20px; }
+  .case-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: clamp(22px, 5vw, 72px); align-items: start; }
+  .phisec-case .case-grid { grid-template-columns: .84fr 1.16fr; }
+  .case-label { color: var(--accent-soft); font-weight: 800; letter-spacing: .13em; font-size: .74rem; text-transform: uppercase; }
+  .case h3 { font-size: clamp(2rem, 3.4vw, 3.25rem); line-height: .98; letter-spacing: -.055em; margin: 10px 0 18px; }
+  .case-copy { color: #d6ddde; font-size: 1rem; max-width: 600px; }
+  .role-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 28px 0 0; border-top: 1px solid var(--line); }
+  .role-list div { border-bottom: 1px solid var(--line); padding: 12px 12px 13px 0; }
+  .role-list div + div { padding-left: 12px; border-left: 1px solid var(--line); }
+  .role-list b { display: block; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 4px; }
+  .role-list span { font-size: .87rem; color: #d4dcdd; }
+  .media-frame { background: var(--surface); border: 1px solid rgba(242,239,231,.14); border-radius: 14px; box-shadow: 0 20px 45px rgba(0,0,0,.24); overflow: hidden; position: relative; }
+  .media-frame img, .media-frame video { display: block; width: 100%; height: auto; }
+  .caption { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: .75rem; padding: 9px 11px; }
+  .caption span:last-child { color: var(--accent-soft); white-space: nowrap; }
+  .video-block { margin-top: 18px; }
+  .data-note { margin-top: 20px; border-left: 2px solid var(--accent); padding: 8px 0 8px 13px; color: #cbd4d6; font-size: .86rem; }
+  .team-strip { padding: 44px 0; background: #111718; color: #172022; }
+  .team-strip .image-wrap { width: min(var(--max), calc(100% - 44px)); height: min(58vw, 590px); position: relative; overflow: hidden; margin: 0 auto; border-radius: 16px; border: 1px solid rgba(242,239,231,.13); box-shadow: 0 24px 54px rgba(0,0,0,.25); }
+  .team-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 47%; display: block; }
+  .team-strip .overlay { position: absolute; inset: auto 0 0; padding: 64px 34px 28px; background: linear-gradient(transparent, rgba(10,13,14,.9)); color: #fff; }
+  .team-strip h3 { font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -.05em; margin: 6px 0 0; }
+  .alpha { background: var(--paper); color: #192225; }
+  .alpha .section-head p, .alpha .case-copy { color: #566367; }
+  .alpha .case { border-color: #c7cdcd; }
+  .alpha .case-label, .alpha .role-list b { color: #1f6f9e; }
+  .alpha .role-list { border-color: #c7cdcd; }
+  .alpha .role-list div { border-color: #c7cdcd; }
+  .alpha .role-list span { color: #334144; }
+  .gallery { display: grid; grid-template-columns: 1.16fr .84fr; gap: 14px; margin-top: 28px; }
+  .gallery .stack { display: grid; gap: 14px; }
+  .gallery figure { margin: 0; border: 1px solid #d3d8d8; border-radius: 14px; box-shadow: 0 14px 30px rgba(24,34,37,.12); background: #e3e6e4; overflow: hidden; }
+  .gallery img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+  .gallery figure:hover img { transform: scale(1.025); }
+  .gallery .wide { aspect-ratio: 1.28; }
+  .gallery .small { aspect-ratio: 1.8; }
+  .gallery .drawing { aspect-ratio: 1.28; background: white; }
+  .gallery .drawing img { object-fit: contain; background: white; }
+  .alpha .caption { color: #657174; }
+  .alpha .caption span:last-child { color: #1f6f9e; }
+  .timeline { display: grid; grid-template-columns: .8fr 1.2fr; gap: 34px; align-items: start; }
+  .timeline-title { font-size: clamp(2.2rem, 4vw, 4rem); line-height: .95; letter-spacing: -.055em; margin: 7px 0 0; }
+  .timeline-list { border-top: 1px solid var(--line); }
+  .timeline-item { display: grid; grid-template-columns: 86px 1fr; gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+  .timeline-item .year { color: var(--accent-soft); font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .timeline-item b { display: block; font-size: 1rem; margin-bottom: 3px; }
+  .timeline-item p { margin: 0; color: var(--muted); font-size: .9rem; }
+  .contact { background: var(--accent); color: #191514; }
+  .contact-grid { display: flex; justify-content: space-between; gap: 24px; align-items: end; }
+  .contact h2 { margin: 7px 0 0; font-size: clamp(2.8rem, 6vw, 5.6rem); letter-spacing: -.075em; line-height: .85; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: end; }
+  .contact .button { border-color: rgba(25,21,20,.7); }
+  .contact .button:hover { background: #191514; color: var(--paper); }
+  footer { padding: 18px 0; font-size: .76rem; color: var(--muted); display: flex; justify-content: space-between; gap: 20px; }
+  .reveal { opacity: 1; transform: none; }
+  .reveal.show { opacity: 1; transform: none; }
+  @media (max-width: 760px) {
+    .shell { width: min(var(--max), calc(100% - 28px)); }
+    .nav-links { display: none; }
+    .hero { min-height: 690px; }
+    .hero-img { padding: 0; }
+    .hero-img img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: center center; }
+    .hero-img::after { background: linear-gradient(90deg, rgba(11,14,15,.97), rgba(11,14,15,.56)), linear-gradient(0deg, #0f1415 0%, transparent 45%); }
+    .hero-meta { grid-template-columns: 1fr; margin-top: 34px; }
+    .hero-meta div + div { border-left: 0; padding-left: 0; padding-top: 10px; }
+    section { padding: 72px 0; }
+    .section-head, .case-grid, .timeline { grid-template-columns: 1fr; }
+    .phisec-case .case-grid { grid-template-columns: 1fr; }
+    .role-list { grid-template-columns: 1fr; }
+    .role-list div + div { border-left: 0; padding-left: 0; }
+    .gallery { grid-template-columns: 1fr; }
+    .contact-grid { display: block; }
+    .contact-links { justify-content: start; margin-top: 26px; }
+    footer { display: block; }
+    footer span { display: block; margin: 4px 0; }
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="mark" href="#top">EC<span>/</span>PORTFOLIO</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#phisec">PHISEC Racing</a>
+        <a href="#alpha">F1 in Schools</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-img"><img src="assets/phisec/car_hero.jpeg" alt="Formula Student car at a PHISEC Racing presentation"></div>
+      <div class="shell hero-content">
+        <div class="eyebrow">Mechanical Engineering · Motorsport</div>
+        <h1>Building a path through <em>motorsport.</em></h1>
+        <p>Mechanical Engineering student developing experience across Formula Student, rally, technical scrutineering and performance-focused design.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#phisec">View selected work <span>↓</span></a>
+          <a class="button" href="assets/Eduardo_Carvalho_CV.pdf" target="_blank" rel="noopener">Download CV ↗</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>Current role</b>PHISEC Racing · Aerodynamics Lead</div>
+          <div><b>Core tools</b>STAR-CCM+ · Siemens NX · SolidWorks</div>
+          <div><b>Motorsport</b>Formula Student · Rally · F1 in Schools</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="phisec">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">01 / Formula Student</div>
+            <h2>PHISEC<br>Racing</h2>
+          </div>
+          <p>Leading the development of PHISEC Racing’s first simple, effective aerodynamic package for the team’s second electric Formula Student car — with manufacturability considered from the first concept.</p>
+        </div>
+
+        <article class="case phisec-case">
+          <div class="case-grid reveal">
+            <div>
+              <div class="case-label">PHI5e · Current programme</div>
+              <h3>A simple, effective aero package designed to be built.</h3>
+              <p class="case-copy">As Aerodynamics Department Lead, my primary focus is developing a simple, effective aerodynamic package that the team can manufacture reliably. The work balances aerodynamic concept development with CAD packaging, manufacturing constraints and whole-car integration. A basic, robust CFD workflow supports consistent concept comparison throughout the process.</p>
+              <div class="role-list">
+                <div><b>Role</b><span>Aerodynamics Department Lead</span></div>
+                <div><b>Focus</b><span>Aero package development &amp; manufacturability</span></div>
+                <div><b>Tools</b><span>STAR-CCM+ · Siemens NX · SolidWorks</span></div>
+              </div>
+            </div>
+            <div>
+              <figure class="media-frame">
+                <img src="assets/phisec/car_full.png" alt="PHISEC Racing electric Formula Student car render">
+                <figcaption class="caption"><span>PHI5e · second electric Formula Student car</span><span>PHISEC Racing</span></figcaption>
+              </figure>
+              <figure class="media-frame video-block">
+                <video controls preload="metadata" poster="assets/phisec/cfd_x_sweep_poster.jpg" aria-label="CFD X-sweep visualisation"><source src="assets/phisec/cfd_x_sweep.mp4" type="video/mp4">Your browser does not support HTML video.</video>
+                <figcaption class="caption"><span>Selected CFD field visualisation · X-sweep</span><span>High-level view</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="team-strip" aria-label="PHISEC Racing team photo">
+      <div class="image-wrap">
+        <img src="assets/phisec/team_switzerland.jfif" alt="PHISEC Racing team at a Formula Student event in Switzerland">
+        <div class="overlay">
+          <div class="eyebrow">Formula Student · international competition</div>
+          <h3>Engineering is a team sport.</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="alpha" id="alpha">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">02 / Competition design</div>
+            <h2>Alpha<br>Scorpii</h2>
+          </div>
+          <p>F1 in Schools was an early opportunity to combine team leadership, CAD design and engineering communication. As Team Leader and Design Lead, I worked with a five-person team that placed 3rd in Portugal’s national final in 2023.</p>
+        </div>
+
+        <article class="case">
+          <div class="case-grid reveal">
+            <div>
+              <div class="case-label">F1 in Schools · 2023</div>
+              <h3>Design ownership from concept to technical drawing.</h3>
+              <p class="case-copy">The project combined aerodynamic form, structural details and the constraints of the competition regulations. I led technical decision-making and CAD development, producing visual and drawing material for the competition car.</p>
+              <div class="role-list">
+                <div><b>Role</b><span>Team Leader &amp; Design Lead</span></div>
+                <div><b>Outcome</b><span>3rd place, Portugal national final</span></div>
+                <div><b>Evidence</b><span>CAD, assembly details and technical drawing</span></div>
+              </div>
+            </div>
+            <figure class="media-frame">
+              <img src="assets/alpha-scorpii/real_car.jpeg" alt="Alpha Scorpii F1 in Schools competition car">
+              <figcaption class="caption"><span>Alpha Scorpii competition car</span><span>F1 in Schools</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="gallery reveal" aria-label="Alpha Scorpii technical gallery">
+            <figure class="wide"><img src="assets/alpha-scorpii/exploded_cad.jpeg" alt="Exploded CAD view of Alpha Scorpii F1 in Schools car"><figcaption class="caption"><span>Exploded CAD view — system-level design</span><span>CAD</span></figcaption></figure>
+            <div class="stack">
+              <figure class="drawing"><img src="assets/alpha-scorpii/national_technical_drawing.png" alt="Alpha Scorpii national technical drawing"><figcaption class="caption"><span>National car technical drawing</span><span>1:1 reference</span></figcaption></figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell timeline reveal">
+        <div>
+          <div class="eyebrow">03 / Beyond the workshop</div>
+          <h2 class="timeline-title">Motorsport<br>experience.</h2>
+        </div>
+        <div class="timeline-list">
+          <div class="timeline-item"><div class="year">2026—now</div><div><b>Trainee Technical Scrutineer · FPAK</b><p>Developing practical understanding of technical compliance and scrutineering procedures in Portuguese motorsport.</p></div></div>
+          <div class="timeline-item"><div class="year">Two editions</div><div><b>Motorsport Event Official · Rally de Portugal, FIA WRC</b><p>Supported stage management, event operations and safety procedures in the FIA World Rally Championship environment.</p></div></div>
+          <div class="timeline-item"><div class="year">2024</div><div><b>Rally Team Intern · Sports &amp; You</b><p>Assembled an FIA Rally4 car and provided event support for a rally car at Rally da Água, Chaves.</p></div></div>
+          <div class="timeline-item"><div class="year">2026</div><div><b>Formula Student · 2nd place, Class 2</b><p>Competition result in Portugal with PHISEC Racing.</p></div></div>
+          <div class="timeline-item"><div class="year">2022</div><div><b>Coimbra Space Summer School · 2nd place</b><p>Team competition result in a space-engineering learning environment.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell contact-grid reveal">
+        <div>
+          <div class="eyebrow" style="color:#082d48">Contact</div>
+          <h2>Let’s build<br>something faster.</h2>
+        </div>
+        <div class="contact-links">
+          <button class="button" id="copy-email" type="button" data-email="eduardocarvalho.n3@gmail.com">Email</button>
+          <a class="button" href="https://www.linkedin.com/in/eduardo-carvalho18" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="button" href="assets/Eduardo_Carvalho_CV.pdf" target="_blank" rel="noopener">CV ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><span>© 2026 Eduardo Carvalho</span><span>Selected work only · Detailed technical data intentionally withheld.</span></footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const emailButton = document.getElementById('copy-email');
+  if (emailButton) {
+    const originalLabel = emailButton.textContent;
+    const email = emailButton.dataset.email;
+    const copied = () => {
+      emailButton.textContent = 'Copied ✓';
+      setTimeout(() => { emailButton.textContent = originalLabel; }, 1800);
+    };
+    emailButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        copied();
+      } catch {
+        const helper = document.createElement('textarea');
+        helper.value = email;
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        helper.remove();
+        copied();
+      }
+    });
+  }
+</script>
+</body>
+</html>
